@@ -190,6 +190,38 @@ INT_PTR CALLBACK PrinterMonitorBox(HWND hDlg, UINT message, WPARAM wParam, LPARA
                                 for (DWORD i = 0; i < pcReturned; i++)
                                 {
                                     pPrinterInfo2 = &lpPrinterInfo2[i];
+                                    
+                                    /*
+                                    HANDLE _hPrinter = NULL;
+                                    DWORD _dwPrinterStatus = 0L;
+
+                                    // Open a handle to the printer. 
+                                    if (OpenPrinter(pPrinterInfo2->pPrinterName, &_hPrinter, NULL))
+                                    {
+                                        DWORD _cByteUsed = 0L;
+                                        DWORD _cByteNeeded = 0L;
+                                        LPPRINTER_INFO_2 _pPrinterInfo_2 = NULL;
+
+                                        if (!GetPrinter(_hPrinter, Level, NULL, 0, &_cByteNeeded))
+                                        {
+                                            if (::GetLastError() == ERROR_INSUFFICIENT_BUFFER)
+                                            {
+                                                _pPrinterInfo_2 = reinterpret_cast<LPPRINTER_INFO_2>(LocalAlloc(LPTR, _cByteNeeded + sizeof(cbBuf)));
+                                                if (_pPrinterInfo_2 != NULL)
+                                                {
+                                                    if (GetPrinter(_hPrinter, Level, (LPBYTE)_pPrinterInfo_2, _cByteNeeded, &_cByteUsed))
+                                                    {
+                                                        _dwPrinterStatus = _pPrinterInfo_2->Status;
+                                                    }
+                                                    LocalFree(_pPrinterInfo_2);
+                                                    _pPrinterInfo_2 = NULL;
+                                                }
+                                            }
+                                        }
+                                        ClosePrinter(_hPrinter);
+                                        _hPrinter = NULL;
+                                    }
+                                    */
                                     for (size_t i = 0; *(pPrinterInfo2->pPrinterName + i) != '\0'; i++)
                                     {
                                         switch (*(pPrinterInfo2->pPrinterName + i))
