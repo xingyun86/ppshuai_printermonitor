@@ -7,10 +7,10 @@
 #define TIMER_SPACE_1S 1000
 INT_PTR CALLBACK PrinterMonitorBox(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam);
 
-INT_PTR APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
+INT APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPTSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+                     _In_ INT       nCmdShow)
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
