@@ -103,7 +103,7 @@ LPCTSTR StatusTotext(CString& text, DWORD status)
     }
     if ((status & PRINTER_STATUS_NO_TONER) == PRINTER_STATUS_NO_TONER)
     {
-        text.Append(_T("打印机墨粉不足。"));
+        text.Append(_T("打印机没有墨粉。"));
     }
     if ((status & PRINTER_STATUS_NOT_AVAILABLE) == PRINTER_STATUS_NOT_AVAILABLE)
     {
@@ -167,7 +167,7 @@ LPCTSTR StatusTotext(CString& text, DWORD status)
     }
     if ((status & PRINTER_STATUS_USER_INTERVENTION) == PRINTER_STATUS_USER_INTERVENTION)
     {
-        text.Append(_T("打印机有一个错误，需要用户做某事。"));
+        text.Append(_T("打印机出现错误，需要用户执行某些操作。"));
     }
     if ((status & PRINTER_STATUS_WAITING) == PRINTER_STATUS_WAITING)
     {
@@ -175,11 +175,11 @@ LPCTSTR StatusTotext(CString& text, DWORD status)
     }
     if ((status & PRINTER_STATUS_WARMING_UP) == PRINTER_STATUS_WARMING_UP)
     {
-        text.Append(_T("打印机正在升温。"));
+        text.Append(_T("打印机正在预热。"));
     }
     if((status | NORMAL_PRINT) == NORMAL_PRINT)
     {
-        text.Append(_T("打印机无状态。"));
+        text.Append(_T("打印机已就绪。"));
     }
     return text;
 }
@@ -298,7 +298,7 @@ INT_PTR CALLBACK PrinterMonitorBox(HWND hDlg, UINT message, WPARAM wParam, LPARA
                                 while (ListView_DeleteColumn(hListData, 0));
                                 ListView_SetExtendedListViewStyle(hListData,
                                     ListView_GetExtendedListViewStyle(hListData)
-                                    | LVS_EX_DOUBLEBUFFER | LVS_EX_FULLROWSELECT);
+                                    | LVS_EX_DOUBLEBUFFER | LVS_EX_FULLROWSELECT | LVS_EX_INFOTIP | LVS_EX_LABELTIP);
                                 GetClientRect(hListData, &rcListData);
                                 for (size_t i = 0; i < sizeof(tTextList) / sizeof(*tTextList); i++)
                                 {
